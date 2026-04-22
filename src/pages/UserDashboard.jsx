@@ -26,6 +26,7 @@ const UserDashboard = () => {
 
         if (!error) setOrders(data);
         setLoading(false)
+        // console.log(data)
         navigate('/dashboard');
       } else {
         navigate('/login');

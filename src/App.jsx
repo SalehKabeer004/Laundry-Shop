@@ -5,6 +5,7 @@ import { supabase } from './utils/supabase'
 
 import NotFound from "./components/NotFound"
 import FullPageLoader from "./components/preloader/FullPageLoader";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import Navbar from "./components/header/Navbar"
 import Home from "./pages/Home"
@@ -15,6 +16,7 @@ import ForgotPassword from "./pages/ForgotPassword"
 import SetNewPassword from "./pages/SetNewPassword"
 import UserDashboard from "./pages/UserDashboard"
 import Booking from "./pages/Booking"
+import AdminDashboard from "./pages/AdminDashboard";
 
 export default function App() {
 
@@ -48,6 +50,14 @@ export default function App() {
           <Route path="set-new-password" element={<SetNewPassword />} />
           <Route path="dashboard" element={<UserDashboard />} />
           <Route path="book-now" element={<Booking />} />
+          <Route
+            path="/admin-dashboard"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
