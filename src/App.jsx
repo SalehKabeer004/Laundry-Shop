@@ -51,7 +51,7 @@ export default function App() {
           <Route path="dashboard" element={<UserDashboard />} />
           <Route path="book-now" element={<Booking />} />
           <Route
-            path="/admin-dashboard"
+            path="/admin"
             element={
               <ProtectedRoute>
                 <AdminDashboard />

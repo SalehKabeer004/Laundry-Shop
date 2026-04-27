@@ -6,6 +6,7 @@ const Signup = ({ onSuccess }) => {
 
 const navigate = useNavigate()
 
+  const [username, setUsername] = useState(''); 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -14,7 +15,7 @@ const navigate = useNavigate()
     e.preventDefault();
     setLoading(true);
     try {
-      await handleSignUp(email, password);
+      await handleSignUp(username, email, password);
       // onSuccess(); // Signup ke baad kya karna hai (e.g., close modal)
     } catch (error) {
       alert(error.message);
@@ -29,13 +30,23 @@ const navigate = useNavigate()
       <h2 className="text-2xl font-bold text-gray-800 mb-6">Signup to Book</h2>
       <form onSubmit={onSubmit} className="space-y-4">
         <div>
+          <label className="block text-sm font-medium text-gray-700">Username</label>
+          <input 
+            type="text" 
+            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+            placeholder="username here"
+            onChange={(e) => setUsername(e.target.value)}
+            required 
+          />
+        </div>
+        <div>
           <label className="block text-sm font-medium text-gray-700">Email Address</label>
           <input 
             type="email" 
             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
             placeholder="example@gmail.com"
             onChange={(e) => setEmail(e.target.value)}
-            required 
+            // required 
           />
         </div>
         <div>
